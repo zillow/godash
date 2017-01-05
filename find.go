@@ -55,7 +55,7 @@ func FindIndex(slice interface{}, value interface{}) (int, error) {
 	}
 
 	for i := 0; i < sliceVal.Len(); i++ {
-		if sliceVal.Index(i).Interface() == value {
+		if reflect.DeepEqual(sliceVal.Index(i).Interface(), value) {
 			return i, nil
 		}
 	}
@@ -92,7 +92,7 @@ func FindLastIndex(slice interface{}, value interface{}) (int, error) {
 	}
 
 	for i := sliceVal.Len() - 1; i != -1; i-- {
-		if sliceVal.Index(i).Interface() == value {
+		if reflect.DeepEqual(sliceVal.Index(i).Interface(), value) {
 			return i, nil
 		}
 	}

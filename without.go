@@ -27,7 +27,7 @@ func Without(slice interface{}, values ...interface{}) (interface{}, error) {
 	for i := 0; i < sliceVal.Len(); i++ {
 		remove := false
 		for _, v := range values {
-			if sliceVal.Index(i).Interface() == v {
+			if reflect.DeepEqual(sliceVal.Index(i).Interface(), v) {
 				remove = true
 				break
 			}
